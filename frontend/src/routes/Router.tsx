@@ -10,6 +10,8 @@ import Contact from "../pages/Contact";
 import BusinessModel from "../pages/business/BusinessModel";
 import Impact from "../pages/impact/Impact";
 import Team from "../pages/Team/Team";
+import Roadmap from "../pages/roadnmap/Roadmap";
+import Funding from "../pages/Funding";
 
 
 
@@ -28,6 +30,8 @@ export const router = createBrowserRouter([
       { path: "business-model", element: <BusinessModel /> },
       { path: "impact", element: <Impact /> },
       { path: "team", element: <Team /> },
+      { path: "roadmap", element: <Roadmap /> },
+      { path: "funding", element: <Funding /> },
 
     ],
   },
