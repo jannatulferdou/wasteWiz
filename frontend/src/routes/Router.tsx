@@ -12,6 +12,9 @@ import Impact from "../pages/impact/Impact";
 import Team from "../pages/Team/Team";
 import Roadmap from "../pages/roadnmap/Roadmap";
 import Funding from "../pages/Funding";
+import RiskMitigation from "../pages/riskmit/RiskMitigation";
+import SafetyGovernance from "../pages/Governance";
+import Partners from "../pages/Partners";
 
 
 
@@ -32,6 +35,9 @@ export const router = createBrowserRouter([
       { path: "team", element: <Team /> },
       { path: "roadmap", element: <Roadmap /> },
       { path: "funding", element: <Funding /> },
+      { path: "risk-mitigation", element: <RiskMitigation /> },
+      { path: "safety-governance", element: <SafetyGovernance /> },
+      { path: "partners", element: <Partners /> },
 
     ],
   },

@@ -99,7 +99,7 @@ const Team = () => {
             transition={{ duration: 0.7 }}
             className="max-w-5xl"
           >
-            <p className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-[#247246]">
+            <p className="mb-5 mt-10 text-sm font-bold uppercase tracking-[0.25em] text-[#247246]">
               Team & Governance
             </p>
 

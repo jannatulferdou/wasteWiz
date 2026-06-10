@@ -87,13 +87,9 @@ const Technology = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <img
-              src="/waste-wiz.jpg"
-              alt="WasteWiz Logo"
-              className="mb-10 h-16 w-auto object-contain"
-            />
+           
 
-            <p className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-[#247246]">
+            <p className="mb-5 mt-10 text-sm font-bold uppercase tracking-[0.25em] text-[#247246]">
               Technology Architecture
             </p>
 

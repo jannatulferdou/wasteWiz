@@ -135,11 +135,7 @@ const Impact = () => {
       {/* Hero */}
       <section className="px-6 py-24 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <img
-            src="/waste-wiz.jpg"
-            alt="WasteWiz Logo"
-            className="mb-10 h-16 w-auto object-contain"
-          />
+       
 
           <motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -147,7 +143,7 @@ const Impact = () => {
             transition={{ duration: 0.7 }}
             className="max-w-5xl"
           >
-            <p className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-[#247246]">
+            <p className="mb-5 mt-10 text-sm font-bold uppercase tracking-[0.25em] text-[#247246]">
               Impact Dashboard
             </p>
 

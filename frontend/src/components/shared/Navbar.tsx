@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ChevronDown, Leaf, Menu, X } from "lucide-react";
+import { ChevronDown,  Menu, X } from "lucide-react";
+import logo from "../../assets/waste-wiz-logo.png";
 
 const mainLinks = [
   { name: "Home", path: "/" },
@@ -14,7 +15,7 @@ const mainLinks = [
 ];
 
 const moreLinks = [
-  { name: "Traction", path: "/traction" },
+
   { name: "Roadmap", path: "/roadmap" },
   { name: "Safety Governance", path: "/safety-governance" },
   { name: "Risk Mitigation", path: "/risk-mitigation" },
@@ -23,18 +24,18 @@ const moreLinks = [
   { name: "Contact", path: "/contact" },
 ];
 
-const dashboardLinks = [
-  { name: "Dashboard", path: "/dashboard" },
-  { name: "Smart Bins", path: "/dashboard/smart-bins" },
-  { name: "Hubs", path: "/dashboard/hubs" },
-  { name: "Credits", path: "/dashboard/credits" },
-  { name: "Reports", path: "/dashboard/reports" },
-];
+// const dashboardLinks = [
+//   { name: "Dashboard", path: "/dashboard" },
+//   { name: "Smart Bins", path: "/dashboard/smart-bins" },
+//   { name: "Hubs", path: "/dashboard/hubs" },
+//   { name: "Credits", path: "/dashboard/credits" },
+//   { name: "Reports", path: "/dashboard/reports" },
+// ];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
-  const [dashboardOpen, setDashboardOpen] = useState(false);
+  // const [dashboardOpen, setDashboardOpen] = useState(false);
 
   const navClass = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-semibold transition duration-300 ${
@@ -43,10 +44,10 @@ const Navbar = () => {
 
   return (
     <header className="fixed left-0 right-0 top-4 z-50 px-4">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-[#267246]/10 bg-white/90 px-5 py-3 shadow-[0_10px_40px_rgba(43,63,85,0.10)] backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-[#267246]/10 bg-white/90 px-4 py-3 shadow-[0_10px_40px_rgba(43,63,85,0.10)] backdrop-blur-xl">
         <Link to="/" className="flex items-center gap-3">
-          <div className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-[#267246] to-[#2B3F55] text-white shadow-lg shadow-[#267246]/20">
-            <Leaf size={23} />
+          <div className="grid h-11 w-11 place-items-center ">
+            <img src={logo} alt="WasteWiz Logo" className="object-cover h-full w-full" />
           </div>
 
           <div>
@@ -90,7 +91,7 @@ const Navbar = () => {
             )}
           </div>
 
-          <div className="relative">
+          {/* <div className="relative">
             <button
               onClick={() => setDashboardOpen(!dashboardOpen)}
               className="flex items-center gap-1 text-sm font-semibold text-slate-600 transition hover:text-[#2B3F55]"
@@ -112,7 +113,7 @@ const Navbar = () => {
                 ))}
               </div>
             )}
-          </div>
+          </div> */}
         </div>
 
         <div className="hidden items-center gap-3 xl:flex">
@@ -146,7 +147,7 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="mx-auto mt-3 max-w-7xl rounded-3xl border border-[#267246]/10 bg-white p-5 shadow-2xl xl:hidden">
           <div className="grid gap-2">
-            {[...mainLinks, ...moreLinks, ...dashboardLinks].map((link) => (
+            {[...mainLinks, ...moreLinks].map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
