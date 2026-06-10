@@ -1,641 +1,399 @@
-import React from 'react';
+import { motion } from "framer-motion";
 import {
   AlertTriangle,
-
-  Factory,
-  Fish,
-  Trash2,
-  XCircle,
-  TrendingDown,
- 
-  Building2,
-  Recycle,
+  BarChart3,
+  
   Leaf,
-  Cpu,
- 
-  Zap,
-  Shield,
-  Globe,
-  Home,
+  PackageX,
+  Recycle,
+  Scale,
+  ShieldCheck,
 
-  Package,
-  Award,
-  Heart,
+  XCircle,
+  type LucideIcon,
+} from "lucide-react";
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
-  Lightbulb,
-  Target,
-
-  Flame,
-  Waves,
-
-} from 'lucide-react';
-
-const colors = {
-  white: '#FFFFFF',
-  softGreen: '#E8F3EB',
-  navy: '#0A2540',
-  accentGreen: '#2E7D32',
-  navyLight: '#1A3A5C',
-  textDark: '#1A2C2C',
-  textMuted: '#5A6E6E',
-  red: '#DC2626',
-  orange: '#EA580C',
-  amber: '#D97706',
+type ProblemCard = {
+  icon: LucideIcon;
+  title: string;
+  value: string;
+  text: string;
 };
 
-// Header Component
-const ProblemSolutionHeader = () => {
+const crisisCards: ProblemCard[] = [
+  {
+    icon: PackageX,
+    title: "Plastic Waste Crisis",
+    value: "800,000+ tons",
+    text: "Plastic waste generated annually in Bangladesh, with major leakage into rivers and marine ecosystems.",
+  },
+  {
+    icon: Leaf,
+    title: "Organic Waste Problem",
+    value: "80%",
+    text: "Urban municipal waste is dominated by organic household waste, creating methane and landfill pressure.",
+  },
+  {
+    icon: Recycle,
+    title: "Recycling Gap",
+    value: "Low-value plastic ignored",
+    text: "Sachets, films and multilayer plastics are often rejected by traditional recycling systems.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Market Failure",
+    value: "No scalable incentive",
+    text: "Households lack consistent incentives for source segregation and clean feedstock generation.",
+  },
+];
+
+const failureReasons = [
+  {
+    icon: XCircle,
+    title: "Selective Valorization",
+    text: "Existing systems focus mainly on high-value plastics and ignore organic waste, sachets and films.",
+  },
+  {
+    icon: Scale,
+    title: "Commodity Volatility",
+    text: "Plastic resale prices fluctuate, making income and operations unstable for informal waste workers.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "No Proof Layer",
+    text: "Most systems cannot provide audit-ready data for EPR, plastic credits, carbon credits or ESG reporting.",
+  },
+];
+
+const marketData = [
+  { market: "Plastic", value: 3 },
+  { market: "Construction", value: 34.4 },
+  { market: "Fertilizer", value: 0.906 },
+  { market: "Plastic Credits", value: 0.462 },
+];
+
+const wasteTrend = [
+  { year: "2026", plastic: 0.8, organic: 2.5 },
+  { year: "2027", plastic: 0.95, organic: 2.8 },
+  { year: "2028", plastic: 1.1, organic: 3.1 },
+  { year: "2029", plastic: 1.25, organic: 3.4 },
+  { year: "2030", plastic: 1.4, organic: 3.8 },
+];
+
+const policies = [
+  "Sustainable Public Procurement",
+  "Extended Producer Responsibility",
+  "Climate Finance",
+  "Impact Bonds",
+  "Plastic Credit Markets",
+  "Carbon Credit Markets",
+];
+
+const Problem = () => {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-navy to-navyLight text-white">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-red rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <AlertTriangle className="w-4 h-4 text-red" />
-              <span className="text-sm font-medium">The Crisis</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              From Crisis to
-              <span className="text-accent"> Circular Solution</span>
+    <main className="min-h-screen bg-[#FAFAF8] text-[#263847]">
+      {/* Hero */}
+      <section className="px-6 py-24 lg:px-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <img
+              src="/waste-wiz.jpg"
+              alt="WasteWiz Logo"
+              className="mb-10 h-16 w-auto object-contain"
+            />
+
+            <p className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-[#247246]">
+              Problem & Market Opportunity
+            </p>
+
+            <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-7xl">
+              Bangladesh’s waste crisis is also a circular economy opportunity.
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              Bangladesh faces a severe environmental crisis with 800,000+ tons of plastic waste annually, 
-              while traditional recycling fails to manage low-value plastics and organic waste.
+
+            <p className="mt-8 max-w-3xl text-xl leading-9 text-[#5F6F7A]">
+              Traditional recycling fails because it leaves behind low-value
+              plastics, ignores the organic waste stream, and cannot provide
+              proof-based impact data for policy and credit markets.
             </p>
-          </div>
-          
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-red mb-1">800K+</div>
-                <div className="text-xs text-gray-300">Tons Plastic/Year</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-amber mb-1">80%</div>
-                <div className="text-xs text-gray-300">Organic Waste in Dhaka</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-orange mb-1">$34.4B</div>
-                <div className="text-xs text-gray-300">Construction Market by 2025</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-accent mb-1">$140-670</div>
-                <div className="text-xs text-gray-300">Per Ton Credit Value</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
-// Problem Deep Dive Component
-const ProblemDeepDive = () => {
-  const problems = [
-    {
-      icon: Trash2,
-      title: "Dual Stream Failure",
-      description: "Traditional recycling only targets high-value plastics, completely neglecting low-value plastics (sachets, films) and organic waste.",
-      stat: "80% of municipal waste is organic",
-      color: "bg-red-50",
-      iconColor: "text-red"
-    },
-    {
-      icon: XCircle,
-      title: "No Incentive Models",
-      description: "No scalable, incentivized systems exist to encourage households to consistently perform source-segregation.",
-      stat: "20-30% diversion possible with incentives",
-      color: "bg-orange-50",
-      iconColor: "text-orange"
-    },
-    {
-      icon: TrendingDown,
-      title: "Commodity Volatility",
-      description: "Traditional models rely on fluctuating plastic prices, destabilizing informal worker wages and operations.",
-      stat: "WasteWiz diversifies into stable markets",
-      color: "bg-amber-50",
-      iconColor: "text-amber"
-    }
-  ];
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="/solution"
+                className="rounded-full bg-[#247246] px-8 py-4 font-semibold text-white hover:bg-[#2F8A57]"
+              >
+                See Solution
+              </a>
 
-  return (
-    <div className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            The Systemic Crisis
-          </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-6"></div>
-          <p className="text-textMuted max-w-2xl mx-auto">
-            Bangladesh's waste management system is overwhelmed by two unmanaged streams that traditional recycling cannot address
-          </p>
-        </div>
+              <a
+                href="/business-model"
+                className="rounded-full border border-[#247246] px-8 py-4 font-semibold text-[#247246] hover:bg-[#EAF5EE]"
+              >
+                View Market Model
+              </a>
+            </div>
+          </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {problems.map((problem, idx) => (
-            <div key={idx} className={`${problem.color} rounded-2xl p-6 hover:shadow-xl transition-all`}>
-              <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-4">
-                <problem.icon className={`${problem.iconColor} w-7 h-7`} />
-              </div>
-              <h3 className="text-xl font-bold text-navy mb-2">{problem.title}</h3>
-              <p className="text-textMuted text-sm mb-4">{problem.description}</p>
-              <div className="bg-white/80 rounded-lg p-3">
-                <p className="text-xs text-navy font-semibold">{problem.stat}</p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="rounded-[36px] bg-[#EAF5EE] p-6"
+          >
+            <div className="rounded-[28px] bg-[#FAFAF8] p-6 shadow-sm">
+              <h3 className="text-2xl font-bold">Crisis Snapshot</h3>
+
+              <div className="mt-6 space-y-4">
+                {[
+                  ["Plastic Waste", "800,000+ tons/year"],
+                  ["Organic Waste", "80% of urban MSW"],
+                  ["Recycling Failure", "Sachets + films ignored"],
+                  ["Proof Gap", "No audit-ready impact data"],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className="flex items-center justify-between gap-4 border-t border-[#DCE9E0] pt-4"
+                  >
+                    <span className="text-[#5F6F7A]">{label}</span>
+                    <span className="text-right font-bold text-[#247246]">
+                      {value}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </motion.div>
         </div>
+      </section>
 
-        {/* Environmental Impact Stats */}
-        <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-8">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <Waves className="w-8 h-8 text-red mx-auto mb-2" />
-              <p className="text-2xl font-bold text-navy">4,000+</p>
-              <p className="text-xs text-textMuted">Rivers polluted annually</p>
-            </div>
-            <div className="text-center">
-              <Fish className="w-8 h-8 text-orange mx-auto mb-2" />
-              <p className="text-2xl font-bold text-navy">1.5M+</p>
-              <p className="text-xs text-textMuted">Marine species affected</p>
-            </div>
-            <div className="text-center">
-              <Trash2 className="w-8 h-8 text-amber mx-auto mb-2" />
-              <p className="text-2xl font-bold text-navy">60%+</p>
-              <p className="text-xs text-textMuted">Landfill overflow by 2030</p>
-            </div>
-            <div className="text-center">
-              <Flame className="w-8 h-8 text-red mx-auto mb-2" />
-              <p className="text-2xl font-bold text-navy">15%</p>
-              <p className="text-xs text-textMuted">Methane from organic waste</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+      {/* Crisis Cards */}
+      <section className="px-6 pb-20 lg:px-20">
+        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {crisisCards.map((item, index) => {
+            const Icon = item.icon;
 
-// Market Failure Visualization
-const MarketFailure = () => {
-  return (
-    <div className="py-16 bg-softGreen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold text-navy mb-2">Why Existing Systems Fail</h2>
-          <div className="w-16 h-0.5 bg-accent mx-auto rounded-full"></div>
+            return (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
+                className="border-t border-[#DCE9E0] pt-6"
+              >
+                <Icon className="text-[#247246]" size={34} />
+                <p className="mt-8 text-3xl font-bold text-[#247246]">
+                  {item.value}
+                </p>
+                <h3 className="mt-3 text-xl font-bold">{item.title}</h3>
+                <p className="mt-4 leading-7 text-[#5F6F7A]">{item.text}</p>
+              </motion.article>
+            );
+          })}
         </div>
-        
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-xl p-5 shadow-sm">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-red/10 rounded-lg flex items-center justify-center">
-                <span className="text-red font-bold">1</span>
-              </div>
-              <h3 className="font-bold text-navy">Selective Valorization</h3>
-            </div>
-            <p className="text-textMuted text-sm">
-              Current infrastructure focuses almost exclusively on high-value plastics, completely neglecting 
-              low-value plastics (multilayer sachets, films) and the massive organic stream.
+      </section>
+
+      {/* Charts */}
+      <section className="bg-[#EAF5EE] px-6 py-20 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 max-w-3xl">
+            <p className="font-bold uppercase tracking-[0.2em] text-[#247246]">
+              Waste Pressure
             </p>
-            <div className="mt-3 pt-3 border-t border-gray-100">
-              <div className="flex justify-between text-xs">
-                <span className="text-textMuted">Neglected Stream:</span>
-                <span className="font-semibold text-red">80% of total waste</span>
-              </div>
-            </div>
+            <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+              The unmanaged waste burden is increasing.
+            </h2>
           </div>
-          
-          <div className="bg-white rounded-xl p-5 shadow-sm">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-orange/10 rounded-lg flex items-center justify-center">
-                <span className="text-orange font-bold">2</span>
+
+          <div className="grid gap-8 lg:grid-cols-2">
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-[32px] bg-[#FAFAF8] p-6"
+            >
+              <h3 className="mb-6 text-2xl font-bold">
+                Plastic & Organic Waste Trend
+              </h3>
+
+              <div className="h-[330px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={wasteTrend}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#DCE9E0" />
+                    <XAxis dataKey="year" />
+                    <YAxis />
+                    <Tooltip />
+                    <Area
+                      type="monotone"
+                      dataKey="organic"
+                      stroke="#263847"
+                      fill="#DCE9E0"
+                      strokeWidth={3}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="plastic"
+                      stroke="#247246"
+                      fill="#A8D8B5"
+                      strokeWidth={3}
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
               </div>
-              <h3 className="font-bold text-navy">Lack of Incentives</h3>
-            </div>
-            <p className="text-textMuted text-sm">
-              While community awareness exists, there is a total absence of scalable, incentivized models 
-              that encourage households to consistently perform source-segregation.
-            </p>
-            <div className="mt-3 pt-3 border-t border-gray-100">
-              <div className="flex justify-between text-xs">
-                <span className="text-textMuted">Participation Gap:</span>
-                <span className="font-semibold text-orange">0 incentive structures</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="rounded-[32px] bg-[#FAFAF8] p-6"
+            >
+              <h3 className="mb-6 text-2xl font-bold">
+                Market Opportunity Size
+              </h3>
+
+              <div className="h-[330px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={marketData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#DCE9E0" />
+                    <XAxis dataKey="market" />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar
+                      dataKey="value"
+                      fill="#247246"
+                      radius={[10, 10, 0, 0]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
-            </div>
-          </div>
-          
-          <div className="bg-white rounded-xl p-5 shadow-sm">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-amber/10 rounded-lg flex items-center justify-center">
-                <span className="text-amber font-bold">3</span>
-              </div>
-              <h3 className="font-bold text-navy">Commodity Volatility</h3>
-            </div>
-            <p className="text-textMuted text-sm">
-              Traditional models rely on fluctuating plastic commodity prices, making wages and operational 
-              stability of informal waste workers highly volatile.
-            </p>
-            <div className="mt-3 pt-3 border-t border-gray-100">
-              <div className="flex justify-between text-xs">
-                <span className="text-textMuted">WasteWiz Hedge:</span>
-                <span className="font-semibold text-amber">Diversified stable markets</span>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
+      </section>
 
-// Solution Overview Component
-const SolutionOverview = () => {
-  return (
-    <div className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-softGreen rounded-full px-4 py-2 mb-4">
-            <Lightbulb className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium text-navy">The Solution</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            The South Asian Circular Engine
-          </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-6"></div>
-          <p className="text-textMuted max-w-2xl mx-auto">
-            Under the leadership of CEO Md Emon Chowdhury, WasteWiz has developed an integrated circular manufacturing 
-            engine designed to maximize value from every waste component.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Why recycling fails */}
+      <section className="bg-white px-6 py-20 lg:px-20">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
           <div>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Cpu className="w-6 h-6 text-cyan-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-navy">AI-Powered Smart Bins</h3>
-                  <p className="text-textMuted text-sm">
-                    Solar-powered bins using OpenCV and TensorFlow Lite perform 95%+ accurate source-segregation 
-                    at the community level with digital incentives for consistent participation.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Factory className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-navy">Decentralized Micro-Factories</h3>
-                  <p className="text-textMuted text-sm">
-                    Clean feedstock funneled into co-located community micro-factories, minimizing logistics costs 
-                    and associated carbon emissions.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-6 h-6 text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-navy">Blockchain Proof Layer</h3>
-                  <p className="text-textMuted text-sm">
-                    IoT sensor network + private blockchain creates immutable audit trail — from initial deposit 
-                    to final industrial sale, enabling premium credit monetization.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <p className="font-bold uppercase tracking-[0.2em] text-[#247246]">
+              Why Existing Recycling Fails
+            </p>
+            <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+              The current system captures value selectively.
+            </h2>
+            <p className="mt-6 text-lg leading-9 text-[#5F6F7A]">
+              Most recycling models prioritize high-value plastics only. This
+              leaves organic waste, sachets, films and mixed plastics unmanaged,
+              while communities lack incentives and companies lack verified data.
+            </p>
           </div>
-          
-          <div className="bg-gradient-to-br from-navy to-navyLight rounded-2xl p-6 text-white">
-            <div className="flex items-center gap-2 mb-4">
-              <Target className="w-5 h-5 text-accent" />
-              <h3 className="font-bold">3ZERO Alignment</h3>
-            </div>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-                  <span className="text-xs">1</span>
-                </div>
-                <div>
-                  <p className="font-semibold">Zero Net Carbon Emissions</p>
-                  <p className="text-xs text-gray-300">75,000 tons CO₂e reduced annually</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-                  <span className="text-xs">2</span>
-                </div>
-                <div>
-                  <p className="font-semibold">Zero Wealth Concentration</p>
-                  <p className="text-xs text-gray-300">500+ institutionalized women-led jobs</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-                  <span className="text-xs">3</span>
-                </div>
-                <div>
-                  <p className="font-semibold">Zero Unemployment</p>
-                  <p className="text-xs text-gray-300">Social business & innovation workforce</p>
-                </div>
-              </div>
-            </div>
+
+          <div className="space-y-6">
+            {failureReasons.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className="border-t border-[#DCE9E0] pt-6"
+                >
+                  <Icon className="text-[#247246]" size={32} />
+                  <h3 className="mt-5 text-2xl font-bold">{item.title}</h3>
+                  <p className="mt-3 leading-8 text-[#5F6F7A]">{item.text}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
+      </section>
 
-// Triple Loop Model Component
-const TripleLoop = () => {
-  const loops = [
-    {
-      icon: Recycle,
-      title: "High-Value Loop",
-      subtitle: "Recycling",
-      description: "AI-sorted polymers like PET, PP, and HDPE are funneled to existing SME recycling partners for conversion into plastic granules.",
-      color: "bg-blue-50",
-      borderColor: "border-blue-200",
-      iconColor: "text-blue-600",
-      impact: "80%+ recovery rate"
-    },
-    {
-      icon: Building2,
-      title: "Infrastructure Loop",
-      subtitle: "Plastic-to-Bricks (P2B/R)",
-      description: "Low-value, difficult-to-recycle plastics (sachets and films) sequestered into climate-resilient bricks — 7x stronger than clay, flood-resistant.",
-      color: "bg-orange-50",
-      borderColor: "border-orange-200",
-      iconColor: "text-orange-600",
-      impact: "7x stronger than clay"
-    },
-    {
-      icon: Leaf,
-      title: "Regenerative Loop",
-      subtitle: "Organic Fertilizer (OFC)",
-      description: "80% of municipal waste converted into certified bio-fertilizer using Modified Indonesian Windrow Technique — supporting national food security.",
-      color: "bg-green-50",
-      borderColor: "border-green-200",
-      iconColor: "text-accent",
-      impact: "15% yield increase"
-    }
-  ];
+      {/* Policy Alignment */}
+      <section className="bg-[#EAF5EE] px-6 py-20 lg:px-20">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
+          <div>
+            <p className="font-bold uppercase tracking-[0.2em] text-[#247246]">
+              Policy & Climate Finance Alignment
+            </p>
+            <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+              Regulation and finance are creating a new market.
+            </h2>
+            <p className="mt-6 text-lg leading-9 text-[#5F6F7A]">
+              Sustainable procurement, EPR rules, plastic credits, carbon
+              credits and climate finance are increasing demand for verified
+              circular infrastructure.
+            </p>
+          </div>
 
-  return (
-    <div className="py-20 bg-softGreen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-navy mb-3">The Triple-Loop Model</h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-6"></div>
-          <p className="text-textMuted max-w-2xl mx-auto">
-            No waste left behind — three simultaneous value chains ensuring every component is transformed into value
-          </p>
-        </div>
-        
-        <div className="relative">
-          {/* Connecting lines - decorative */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-orange-200 to-green-200 -translate-y-1/2"></div>
-          
-          <div className="relative grid lg:grid-cols-3 gap-6 z-10">
-            {loops.map((loop, idx) => (
-              <div key={idx} className={`${loop.color} rounded-2xl p-6 border-2 ${loop.borderColor} hover:shadow-xl transition-all group`}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
-                    <loop.icon className={`${loop.iconColor} w-6 h-6`} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-navy">{loop.title}</h3>
-                    <p className="text-xs text-accent font-semibold">{loop.subtitle}</p>
-                  </div>
-                </div>
-                <p className="text-textMuted text-sm mb-4">{loop.description}</p>
-                <div className="bg-white/80 rounded-lg p-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-textMuted">Key Impact</span>
-                    <span className="text-xs font-bold text-navy">{loop.impact}</span>
-                  </div>
-                </div>
-              </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {policies.map((item) => (
+              <motion.div
+                key={item}
+                whileHover={{ y: -5 }}
+                className="border-t border-[#DCE9E0] bg-[#FAFAF8] p-6"
+              >
+                <BarChart3 className="text-[#247246]" size={28} />
+                <h3 className="mt-5 font-bold">{item}</h3>
+              </motion.div>
             ))}
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
+      </section>
 
-// Policy Alignment Component
-const PolicyAlignment = () => {
-  const policies = [
-    {
-      title: "Sustainable Public Procurement (SPP) Policy 2023",
-      description: "Mandates sustainable materials in public infrastructure — guaranteed B2G market for our bricks",
-      icon: Building2,
-      status: "Active",
-      statusColor: "bg-green-100 text-green-700"
-    },
-    {
-      title: "Extended Producer Responsibility (EPR)",
-      description: "Forthcoming guidelines mandating FMCGs provide auditable proof of plastic collection",
-      icon: Package,
-      status: "Forthcoming",
-      statusColor: "bg-amber-100 text-amber-700"
-    },
-    {
-      title: "World Bank $900M Environmental Program",
-      description: "Direct alignment with major climate finance funding pools for infrastructure",
-      icon: Globe,
-      status: "Aligned",
-      statusColor: "bg-blue-100 text-blue-700"
-    },
-    {
-      title: "ADB $400M Climate-Resilient Fund",
-      description: "Pay-for-Success impact bond opportunities for verified pollution reduction",
-      icon: Shield,
-      status: "Targeting",
-      statusColor: "bg-purple-100 text-purple-700"
-    }
-  ];
+      {/* Opportunity */}
+      <section className="px-6 py-24 lg:px-20">
+        <div className="mx-auto max-w-7xl border-t border-[#DCE9E0] pt-16">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <h2 className="text-4xl font-bold md:text-5xl">
+              WasteWiz turns system failure into circular infrastructure.
+            </h2>
 
-  return (
-    <div className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-navy mb-3">Strategic Policy Alignment</h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-6"></div>
-          <p className="text-textMuted max-w-2xl mx-auto">
-            WasteWiz is engineered to capitalize on a rapidly maturing regulatory landscape in Bangladesh and globally
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-6">
-          {policies.map((policy, idx) => (
-            <div key={idx} className="bg-softGreen rounded-xl p-5 flex gap-4 hover:shadow-md transition">
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
-                <policy.icon className="text-accent w-6 h-6" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
-                  <h3 className="font-bold text-navy">{policy.title}</h3>
-                  <span className={`text-xs px-2 py-0.5 rounded-full ${policy.statusColor}`}>
-                    {policy.status}
-                  </span>
-                </div>
-                <p className="text-textMuted text-sm">{policy.description}</p>
+            <div>
+              <p className="text-lg leading-8 text-[#5F6F7A]">
+                The opportunity is not only to collect waste, but to create a
+                verified engine for construction, agriculture, climate finance,
+                and corporate compliance.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="/solution"
+                  className="rounded-full bg-[#247246] px-7 py-3 font-semibold text-white hover:bg-[#2F8A57]"
+                >
+                  View Solution
+                </a>
+
+                <a
+                  href="/technology"
+                  className="rounded-full border border-[#247246] px-7 py-3 font-semibold text-[#247246] hover:bg-[#EAF5EE]"
+                >
+                  See Technology
+                </a>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
-    </div>
-  );
-};
-
-// Why Now Component
-const WhyNow = () => {
-  const drivers = [
-    {
-      icon: TrendingDown,
-      title: "Matured Credit Markets",
-      desc: "Global plastic credits market valued at $462M in 2024",
-      value: "$140-670/ton"
-    },
-    {
-      icon: Target,
-      title: "EPR Mandates Coming",
-      desc: "FMCGs need auditable proof of plastic collection",
-      value: "2026-2027"
-    },
-    {
-      icon: Home,
-      title: "SPP Policy Active",
-      desc: "Guaranteed government off-take for sustainable materials",
-      value: "Effective 2023"
-    },
-    {
-      icon: Award,
-      title: "Climate Finance Ready",
-      desc: "WB + ADB multi-billion dollar programs",
-      value: "$1.3B+ available"
-    }
-  ];
-
-  return (
-    <div className="py-20 bg-navy text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3">Why Now?</h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            A convergence of policy, market, and climate finance drivers makes this the optimal moment for WasteWiz
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-4 gap-6">
-          {drivers.map((driver, idx) => (
-            <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/15 transition">
-              <driver.icon className="w-8 h-8 text-accent mx-auto mb-3" />
-              <h3 className="font-bold text-lg mb-1">{driver.title}</h3>
-              <p className="text-gray-300 text-sm mb-3">{driver.desc}</p>
-              <div className="text-accent font-bold text-lg">{driver.value}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Solution Benefits Component
-const SolutionBenefits = () => {
-  const benefits = [
-    { icon: Shield, title: "Risk Hedging", desc: "Diversified revenue protects against plastic commodity volatility" },
-    { icon: TrendingDown, title: "Superior Margins", desc: "60% on fertilizer, 40% on bricks, 85%+ on credits" },
-    { icon: Zap, title: "Scalability", desc: "Franchise model + IoT logistics for rapid expansion" },
-    { icon: Heart, title: "Social Inclusion", desc: "500+ institutionalized women-led manufacturing jobs" },
-  ];
-
-  return (
-    <div className="py-20 bg-softGreen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-navy mb-3">Why Integration Matters</h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full"></div>
-        </div>
-        
-        <div className="grid md:grid-cols-4 gap-6">
-          {benefits.map((benefit, idx) => (
-            <div key={idx} className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition">
-              <div className="w-14 h-14 bg-softGreen rounded-full flex items-center justify-center mx-auto mb-4">
-                <benefit.icon className="w-7 h-7 text-accent" />
-              </div>
-              <h3 className="font-bold text-navy mb-2">{benefit.title}</h3>
-              <p className="text-textMuted text-sm">{benefit.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Main Problem + Solution Page Component
-const Problem = () => {
-  return (
-    <div className="font-sans antialiased">
-      <ProblemSolutionHeader />
-      <ProblemDeepDive />
-      <MarketFailure />
-      <SolutionOverview />
-      <TripleLoop />
-      <PolicyAlignment />
-      <WhyNow />
-      <SolutionBenefits />
-      
-      <style>{`
-        .bg-navy {
-          background-color: ${colors.navy};
-        }
-        .bg-navyLight {
-          background-color: ${colors.navyLight};
-        }
-        .text-accent {
-          color: ${colors.accentGreen};
-        }
-        .bg-accent {
-          background-color: ${colors.accentGreen};
-        }
-        .bg-softGreen {
-          background-color: ${colors.softGreen};
-        }
-        .text-red {
-          color: ${colors.red};
-        }
-        .bg-red {
-          background-color: ${colors.red};
-        }
-        .text-orange {
-          color: ${colors.orange};
-        }
-        .text-amber {
-          color: ${colors.amber};
-        }
-      `}</style>
-    </div>
+      </section>
+    </main>
   );
 };
 
