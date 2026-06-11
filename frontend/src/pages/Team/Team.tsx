@@ -47,7 +47,7 @@ const members: Member[] = [
   {
     name: "Anik Agarwal",
     role: "Co-Founder & CFO",
-    image: "https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781160290/anik_rdkusl.jpg",
+    image: "https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781163115/anik_agar_iarg5p.png",
     icon: DollarSign,
     bio: "Owns financial modeling, impact credit monetization, revenue architecture, and investment readiness.",
     focus: ["Finance", "Credits", "Revenue"],
