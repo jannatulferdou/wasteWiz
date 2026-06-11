@@ -316,9 +316,9 @@ const About = () => {
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div className="overflow-hidden rounded-[36px] bg-[#EAF5EE]">
             <img
-              src="/about/community.jpg"
+              src="https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781157212/circular_eco_cfxwlm.jpg"
               alt="WasteWiz community circular economy"
-              className="h-[420px] w-full object-cover"
+              className="h-[650px] w-full object-cover"
             />
           </div>
 

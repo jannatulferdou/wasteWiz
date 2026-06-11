@@ -81,14 +81,14 @@ const Footer = () => {
 
           <div className="flex items-center gap-3 md:justify-end">
             <a
-              href="#"
+              href="https://www.facebook.com/wastewiz01"
               className="grid h-11 w-11 place-items-center rounded-full border border-[#DCE9E0] bg-white text-[#667276] transition hover:border-[#247246] hover:bg-[#EAF5EE] hover:text-[#247246]"
             >
               <FaFacebook size={18} />
             </a>
 
             <a
-              href="#"
+              href="https://www.linkedin.com/company/wastewiz/"
               className="grid h-11 w-11 place-items-center rounded-full border border-[#DCE9E0] bg-white text-[#667276] transition hover:border-[#247246] hover:bg-[#EAF5EE] hover:text-[#247246]"
             >
               <FaLinkedin  size={18} />

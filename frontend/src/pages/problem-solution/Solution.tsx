@@ -392,7 +392,7 @@ const Solution = () => {
 
           <div className="overflow-hidden rounded-[36px] bg-[#EAF5EE]">
             <img
-              src="/solution/micro-factory.jpg"
+              src="https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781157873/blog-circular-manufacturing_mqltgs.webp"
               alt="WasteWiz processing micro-factory"
               className="h-[420px] w-full object-cover"
             />

@@ -292,7 +292,7 @@ const Technology = () => {
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div className="overflow-hidden rounded-[36px] bg-[#EAF5EE]">
             <img
-              src="/technology/smart-bin.jpg"
+              src="https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781158442/wastewiz_arc_u9autw.png"
               alt="WasteWiz smart bin technology"
               className="h-[420px] w-full object-cover"
             />

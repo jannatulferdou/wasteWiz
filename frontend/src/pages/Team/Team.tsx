@@ -4,7 +4,7 @@ import {
   DollarSign,
   FlaskConical,
 
-  Link2Icon,
+
 
   Mail,
   ShieldCheck,
@@ -12,7 +12,7 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
-
+import { FaLinkedin  } from "react-icons/fa";
 type Member = {
   name: string;
   role: string;
@@ -28,33 +28,35 @@ const members: Member[] = [
   {
     name: "Md Emon Chowdhury",
     role: "Co-Founder & CEO",
-    image: "/team/emon.jpg",
+    image: "https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781160677/emon_p6rtlr.jpg",
     icon: Target,
     bio: "Leads WasteWiz strategy, B2G partnerships, fundraising, policy alignment, and South Asian expansion.",
     focus: ["Strategy", "Policy", "Fundraising"],
     email: "mdemonchowdhury72@gmail.com",
     linkedin: "https://www.linkedin.com/in/-emon-chowdhury26688/",
   },
+   {
+    name: "Jannatul Ferdous",
+    role: "Co-Founder & CTO",
+    image: "https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781160345/jannatul_zvqpqc.jpg",
+    icon: Cpu,
+    bio: "Leads AI sorting, IoT logistics, blockchain traceability, dashboard systems, and product technology.",
+    focus: ["AI / IoT", "Blockchain", "Dashboard"],
+    linkedin: "https://www.linkedin.com/in/jannatullferdouss/",
+  },
   {
     name: "Anik Agarwal",
     role: "Co-Founder & CFO",
-    image: "/team/anik.jpg",
+    image: "https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781160290/anik_rdkusl.jpg",
     icon: DollarSign,
     bio: "Owns financial modeling, impact credit monetization, revenue architecture, and investment readiness.",
     focus: ["Finance", "Credits", "Revenue"],
   },
-  {
-    name: "Jannatul Ferdous",
-    role: "Co-Founder & CTO",
-    image: "/team/jannatul.jpg",
-    icon: Cpu,
-    bio: "Leads AI sorting, IoT logistics, blockchain traceability, dashboard systems, and product technology.",
-    focus: ["AI / IoT", "Blockchain", "Dashboard"],
-  },
+ 
   {
     name: "Bilkis Akther Niha",
     role: "Lead Researcher",
-    image: "/team/niha.jpg",
+    image: "https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781160677/niha_httaav.jpg",
     icon: FlaskConical,
     bio: "Supports AI/ML validation, contamination detection, product testing, and certification roadmap.",
     focus: ["Research", "ML Validation", "QC"],
@@ -119,9 +121,9 @@ const Team = () => {
       <section className="px-6 lg:px-20">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[36px] bg-[#EAF5EE]">
           <img
-            src="/team/team-banner.jpg"
+            src="https://res.cloudinary.com/dwcqwzm0f/image/upload/v1781159502/cover_fvufeg.png"
             alt="WasteWiz team"
-            className="h-[360px] w-full object-cover"
+            className="h-[470px] w-full object-cover"
           />
         </div>
       </section>
@@ -218,7 +220,7 @@ const Team = () => {
                           rel="noreferrer"
                           className="rounded-full border border-[#DCE9E0] bg-white p-3 text-[#247246] hover:bg-[#EAF5EE]"
                         >
-                          <Link2Icon size={19} />
+                          <FaLinkedin size={19} />
                         </a>
                       )}
                     </div>
